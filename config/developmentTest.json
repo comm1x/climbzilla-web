@@ -8,7 +8,7 @@
 		"climbzillaApi": {
 			"host": "127.0.0.1",
 			"port": 3011,
-			"baseUrl": "http://api.climbzilla.tk"
+			"baseUrl": "http://api.climbzilla-stage.tk"
 		}
 	}
 }

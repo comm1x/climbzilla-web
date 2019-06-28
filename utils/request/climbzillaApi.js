@@ -37,14 +37,6 @@ const makeFinish = (item) => {
 	};
 };
 
-const makePhoto = (item, {baseUrl}) => {
-	return {
-		id: item.id,
-		url: baseUrl + item.url,
-		description: item.description
-	};
-};
-
 const gradeTitleHash = {
 	10: '5a',
 	11: '5a+',
@@ -77,7 +69,7 @@ const makeGrade = (numericGrade) => {
 	return {numeric: numericGrade, title: gradeTitleHash[numericGrade]};
 };
 
-const makeRoute = (item, {baseUrl}) => {
+const makeRoute = (item) => {
 	return {
 		id: item.id,
 		createDate: makeDate(item.create_time),
@@ -85,9 +77,7 @@ const makeRoute = (item, {baseUrl}) => {
 		grade: makeGrade(item.grade),
 		title: item.title,
 		author: item.author && makeUser(item.author),
-		photos: item.photos.map((photo) => {
-			return makePhoto(photo, {baseUrl});
-		}),
+		photos: item.photos,
 		finishes: (item.finishes || []).map(makeFinish)
 	};
 };
@@ -134,14 +124,14 @@ exports.getHall = (hallId) => {
 };
 
 exports.getRoutes = ({hallId}) => {
-	return baseRequest('/v02/top', {
-		query: {hall_id: hallId},
+	return baseRequest('/v04/top', {
+		query: {sector_id: hallId},
 		transform: makeRoutes
 	});
 };
 
 exports.getRoute = (routeId) => {
-	return baseRequest(`/v02/top/${routeId}`, {
+	return baseRequest(`/v04/top/${routeId}`, {
 		query: {expand: 'hall'},
 		transform: makeRoute
 	});
