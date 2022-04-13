@@ -44,9 +44,7 @@ npm install climbzilla-web
 	},
 	"services": {
 		"climbzillaApi": {
-			"host": "api.climbzilla.tk",
-			"port": 80,
-			"baseUrl": "http://api.climbzilla.tk"
+			"url": "https://api.climbzilla.tk"
 		}
 	}
 }

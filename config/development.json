@@ -6,9 +6,7 @@
 	},
 	"services": {
 		"climbzillaApi": {
-			"host": "api.climbzilla-stage.ru",
-			"port": 80,
-			"baseUrl": "http://api.climbzilla-stage.ru"
+			"url": "https://api.climbzilla-stage.ru"
 		}
 	},
 	"mocks": {

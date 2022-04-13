@@ -95,16 +95,14 @@ const baseRequest = (path, options = {}) => {
 			return configHolder.get();
 		})
 		.then((config) => {
-			const {host, port} = config.services.climbzillaApi;
-			const baseUrl = `${host}:${port}`;
-
+			const url = config.services.climbzillaApi.url;
 			const res = got(
-				baseUrl + path,
+				url + path,
 				_(gotOptions).defaults({json: true})
 			);
 
 			return Promise.all([
-				config.services.climbzillaApi.baseUrl,
+				url,
 				res
 			]);
 		})
